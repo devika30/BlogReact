@@ -16,26 +16,23 @@ import HelpLayout from "./components/layouts/HelpLayout";
 import Contact from "./components/pages/help/Contact";
 import Faq from "./components/pages/help/Faq";
 import NotFound from "./components/pages/NotFound";
-import { blogsLoader } from "./components/pages/blogs/Blogs";
-import Blogs from "./components/pages/blogs/Blogs";
-import BlogsLayout from "./components/layouts/BlogsLayout";
-import {SingleBlog} from "./components/pages/blogs/SingleBlog";
-import { singleBlogLoader } from "./components/pages/blogs/SingleBlog";
+import { BlogList } from "./components/pages/BlogList";
+import { SingleBlog } from "./components/pages/SingleBlog";
+import { blogsLoader } from "./components/pages/BlogList";
+import { singleBlogLoader } from "./components/pages/SingleBlog";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<RootLayout />}>
-      <Route path="/" element={<HomePage />} />
+      <Route index path="/" element={<HomePage />} />
       <Route path="create" element={<CreateBlog />} />
       <Route path="about" element={<About />} />
       <Route path="help" element={<HelpLayout />}>
         <Route path="contact" element={<Contact />} />
         <Route path="faq" element={<Faq />} />
       </Route>
-      <Route path="blogs" element={<BlogsLayout />}>
-        <Route index element={<Blogs />} loader={blogsLoader} />
-        <Route path=":id" element={<SingleBlog />} loader={singleBlogLoader} />
-      </Route>
+      <Route  path="blog" element={<BlogList />} loader={blogsLoader} />
+      <Route path=":id" element={<SingleBlog />} loader={singleBlogLoader} />
       <Route path="*" element={<NotFound />} />
     </Route>
   )

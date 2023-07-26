@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { add_blog,delete_blog,fetchBlogs } from "./../../reduxfiles/blogActions";
+import React,{useState} from "react";
+import { useSelector,useDispatch } from "react-redux";
+import {add_blog,delete_blog} from "./../../reduxfiles/blogActions";
 
 function CreateBlog() {
   const [blogTitle, setBlogTitle] = useState("");
   const [blogBody, setBlogBody] = useState("");
-  const {sitename,blogsList} = useSelector((state) => state);
+  const { sitename, blogsList } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const generateRandomId = () => {
@@ -13,19 +13,14 @@ function CreateBlog() {
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     const length = 10;
     let randomId = "";
-  
+
     for (let i = 0; i < length; i++) {
       const randomIndex = Math.floor(Math.random() * characters.length);
       randomId += characters.charAt(randomIndex);
     }
-  
+
     return randomId;
   };
-
-  useEffect(()=>{
-    dispatch(fetchBlogs())
-  },[])
-  
 
   const onSubmitBlog = () => {
     const singleblog = {
@@ -42,7 +37,6 @@ function CreateBlog() {
   const deleteParticularBlog = (id) => {
     dispatch(delete_blog(id));
   };
-
   return (
     <div>
       {console.log(blogsList)}

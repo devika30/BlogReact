@@ -6,9 +6,10 @@ export const SingleBlog = () => {
   const blog = useLoaderData();
   return (
     <div>
-        <h3>Single Blogs</h3>
+      <h3>Single Blogs</h3>
       <p>{blog.title}</p>
       <p>{blog.body}</p>
+      
     </div>
   );
 };
