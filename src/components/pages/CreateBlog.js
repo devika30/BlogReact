@@ -1,15 +1,40 @@
-import React, { Component, useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { add_blog, delete_blog } from "./reduxfiles/blogActions";
+import { add_blog,delete_blog,fetchBlogs } from "./../../reduxfiles/blogActions";
 
 function CreateBlog() {
   const [blogTitle, setBlogTitle] = useState("");
   const [blogBody, setBlogBody] = useState("");
-  const blogItems = useSelector((state) => state.blogsList);
+  const {sitename,blogsList} = useSelector((state) => state);
   const dispatch = useDispatch();
 
+  const generateRandomId = () => {
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    const length = 10;
+    let randomId = "";
+  
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      randomId += characters.charAt(randomIndex);
+    }
+  
+    return randomId;
+  };
+
+  useEffect(()=>{
+    dispatch(fetchBlogs())
+  },[])
+  
+
   const onSubmitBlog = () => {
-    dispatch(add_blog(blogTitle, blogBody));
+    const singleblog = {
+      id: generateRandomId(),
+      title: blogTitle,
+      body: blogBody,
+    };
+
+    dispatch(add_blog(singleblog));
     setBlogTitle("");
     setBlogBody("");
   };
@@ -20,6 +45,8 @@ function CreateBlog() {
 
   return (
     <div>
+      {console.log(blogsList)}
+      <h1>{sitename}</h1>
       <label>Blog Title</label>
       <input
         type="text"
@@ -39,7 +66,7 @@ function CreateBlog() {
         <button onClick={onSubmitBlog}>Add Blog</button>
       </div>
 
-      {/* {blogItems.map((singleBlog) => {
+      {blogsList.map((singleBlog) => {
         return (
           <div key={singleBlog.id}>
             <p>{singleBlog.title}</p>
@@ -49,7 +76,7 @@ function CreateBlog() {
             </button>
           </div>
         );
-      })} */}
+      })}
     </div>
   );
 }
