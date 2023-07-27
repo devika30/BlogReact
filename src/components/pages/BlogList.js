@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { delete_blog } from "./../../reduxfiles/blogActions";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import axios from "axios";
-
+import myStyle from "../../components/myStyle.css";
 
 export const BlogList = () => {
   const { blogsList } = useSelector((state) => state);
@@ -15,17 +15,27 @@ export const BlogList = () => {
 
   return (
     <div>
-      {blogsList.map((singleBlog) => (
-        <div key={singleBlog.id}>
-          <Link to={singleBlog.id.toString()}>
-            {" "}
-            <p>{singleBlog.title}</p>
-          </Link>
-          <button onClick={() => deleteParticularBlog(singleBlog.id)}>
-            Delete
-          </button>
-        </div>
-      ))}
+      <div className="blogBody">
+        {blogsList.map((singleBlog) => (
+          <div key={singleBlog.id} className="singleBlogBlogList">
+            <div className="blogTitleDiv">
+              
+              <NavLink to={singleBlog.id.toString()}>
+                {" "}
+                <p className="blogTitle">{singleBlog.title}</p>
+              </NavLink>
+            </div>
+            <div className="deleteBtnDiv">
+              <button
+                className="deleteButtonStyle"
+                onClick={() => deleteParticularBlog(singleBlog.id)}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
@@ -36,4 +46,3 @@ export const blogsLoader = async () => {
   );
   return response.data;
 };
-

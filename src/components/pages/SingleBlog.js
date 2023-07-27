@@ -1,15 +1,24 @@
 import React from "react";
 import { useActionData, useLoaderData, useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
+import DeleteButton from "./DeleteButton";
+import { delete_blog } from "./../../reduxfiles/blogActions";
+
+
 export const SingleBlog = () => {
-  const { id } = useParams();
   const blog = useLoaderData();
+  const dispatch = useDispatch();
+
+  const deleteParticularBlog = (id) => {
+    dispatch(delete_blog(id));
+  };
   return (
     <div>
       <h3>Single Blogs</h3>
       <p>{blog.title}</p>
       <p>{blog.body}</p>
-      
+      <DeleteButton deleteMethod={()=>deleteParticularBlog(blog.id)}/>
     </div>
   );
 };
