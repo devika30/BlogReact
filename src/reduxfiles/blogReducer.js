@@ -5,7 +5,6 @@ const initialState = {
   blogsList: [],
 };
 
-
 const blogReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_ALL_BLOG:
@@ -19,7 +18,7 @@ const blogReducer = (state = initialState, action) => {
         //state.blogsList =>[{},{}]]
         //action.payload.blog => {id:1,title:"something",body:"something"}
         //blogsList: [...state.blogsList, action.payload.blog]=>[{},{},{id:1,title:"something",body:"something"}]
-        blogsList: [action.payload.blog,...state.blogsList],
+        blogsList: [action.payload.blog, ...state.blogsList],
       };
     case DELETE_BLOG:
       return {

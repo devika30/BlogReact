@@ -1,8 +1,7 @@
 import { FETCH_BLOG, ADD_BLOG, DELETE_BLOG, FETCH_ALL_BLOG } from "./blogType";
 import axios from "axios";
 
-
-export const fetchBlogs=()=> {
+export const fetchBlogs = () => {
   return function (dispatch) {
     axios
       .get("https://jsonplaceholder.typicode.com/posts")
@@ -13,9 +12,7 @@ export const fetchBlogs=()=> {
         console.log("Error", error);
       });
   };
-}
-
-
+};
 
 //action to fetch all blogs
 export const fetch_all_blogs_success = (allBlogs) => {
@@ -26,7 +23,6 @@ export const fetch_all_blogs_success = (allBlogs) => {
     },
   };
 };
-
 
 export const add_blog = (blog) => {
   return {

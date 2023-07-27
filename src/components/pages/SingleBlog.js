@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import DeleteButton from "./DeleteButton";
 import { delete_blog } from "./../../reduxfiles/blogActions";
-
+import myStyle from "../myStyle.css"
 
 export const SingleBlog = () => {
   const blog = useLoaderData();
@@ -14,7 +14,7 @@ export const SingleBlog = () => {
     dispatch(delete_blog(id));
   };
   return (
-    <div>
+    <div className="singlePageBlogDiv">
       <h3>Single Blogs</h3>
       <p>{blog.title}</p>
       <p>{blog.body}</p>
