@@ -31,10 +31,10 @@ const router = createBrowserRouter(
         <Route path="contact" element={<Contact />} />
         <Route path="faq" element={<Faq />} />
       </Route>
-      <Route  path="blog" element={<BlogList />} loader={blogsLoader} />
+      <Route path="blog" element={<BlogList />} loader={blogsLoader} />
       <Route path=":id" element={<SingleBlog />} loader={singleBlogLoader} />
       <Route path="*" element={<NotFound />} />
-    </Route>
+    </Route>  
   )
 );
 
