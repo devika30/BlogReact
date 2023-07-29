@@ -264,6 +264,10 @@
     width: 100%;
   }
 
+  .aboutUsDiv{
+    flex-direction: column;
+  }
+
   .blogBodyCreate {
     height: 70vh;
   }
