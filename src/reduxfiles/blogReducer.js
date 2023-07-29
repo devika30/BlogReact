@@ -3,6 +3,7 @@ import { FETCH_BLOG, ADD_BLOG, DELETE_BLOG, FETCH_ALL_BLOG } from "./blogType";
 const initialState = {
   sitename: "BlogS-site",
   blogsList: [],
+  isBlogFetched:false
 };
 
 const blogReducer = (state = initialState, action) => {
@@ -11,6 +12,7 @@ const blogReducer = (state = initialState, action) => {
       return {
         ...state, //=>{ sitename:"BlogS-site",blogsList:[]}
         blogsList: action.payload.blogs, //blogList:[{},{},{},...]
+        isBlogFetched:true
       };
     case ADD_BLOG:
       return {
@@ -22,6 +24,7 @@ const blogReducer = (state = initialState, action) => {
       };
     case DELETE_BLOG:
       return {
+        ...state,
         blogsList: state.blogsList.filter((singleBlog) => {
           return singleBlog.id != action.payload.blogId;
         }),

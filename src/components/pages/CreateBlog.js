@@ -1,6 +1,6 @@
-import React,{useState} from "react";
-import { useSelector,useDispatch } from "react-redux";
-import {add_blog,delete_blog} from "./../../reduxfiles/blogActions";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { add_blog, delete_blog } from "./../../reduxfiles/blogActions";
 
 function CreateBlog() {
   const [blogTitle, setBlogTitle] = useState("");
@@ -38,40 +38,45 @@ function CreateBlog() {
     dispatch(delete_blog(id));
   };
   return (
-    <div>
-      {console.log(blogsList)}
-      <h1>{sitename}</h1>
-      <label>Blog Title</label>
-      <input
-        type="text"
-        value={blogTitle}
-        onChange={(e) => setBlogTitle(e.target.value)}
-        name="blogTitle"
-      />
+    <>
+      <h1 className="homePageTitle">Blog Page</h1>
 
-      <label>Blog Body</label>
-      <input
-        type="text"
-        value={blogBody}
-        onChange={(e) => setBlogBody(e.target.value)}
-        name="blogBody"
-      />
-      <div>
-        <button onClick={onSubmitBlog}>Add Blog</button>
-      </div>
-
-      {blogsList.map((singleBlog) => {
-        return (
-          <div key={singleBlog.id}>
-            <p>{singleBlog.title}</p>
-            <p>{singleBlog.body}</p>
-            <button onClick={() => deleteParticularBlog(singleBlog.id)}>
-              Delete
-            </button>
+      <div className="blogBodyCreate">
+        <form className="formCreateBlog">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="labelTitleCreate">
+              Blog Title
+            </label>
+            <input
+              type="text"
+              value={blogTitle}
+              onChange={(e) => setBlogTitle(e.target.value)}
+              name="blogTitle"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+            />
           </div>
-        );
-      })}
-    </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="labelTitleCreate">
+              Blog Body
+            </label>
+            <textarea
+              type="text"
+              value={blogBody}
+              onChange={(e) => setBlogBody(e.target.value)}
+              name="blogBody"
+              class="form-control bodyCreate"
+              id="exampleInputPassword1"
+            />
+          </div>
+
+          <button type="submit" class="createBtn" onClick={onSubmitBlog}>
+            Submit
+          </button>
+        </form>
+      </div>
+    </>
   );
 }
 

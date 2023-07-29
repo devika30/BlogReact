@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import CreateBlog from "./components/pages/CreateBlog";
 import { Provider } from "react-redux";
@@ -12,14 +11,13 @@ import {
 import HomePage from "./components/pages/HomePage";
 import RootLayout from "./components/layouts/RootLayout";
 import About from "./components/pages/About";
-import HelpLayout from "./components/layouts/HelpLayout";
-import Contact from "./components/pages/help/Contact";
-import Faq from "./components/pages/help/Faq";
 import NotFound from "./components/pages/NotFound";
+import Help from "./components/pages/Help";
 import { BlogList } from "./components/pages/BlogList";
 import { SingleBlog } from "./components/pages/SingleBlog";
 import { blogsLoader } from "./components/pages/BlogList";
-import { singleBlogLoader } from "./components/pages/SingleBlog";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,12 +25,9 @@ const router = createBrowserRouter(
       <Route index path="/" element={<HomePage />} />
       <Route path="create" element={<CreateBlog />} />
       <Route path="about" element={<About />} />
-      <Route path="help" element={<HelpLayout />}>
-        <Route path="contact" element={<Contact />} />
-        <Route path="faq" element={<Faq />} />
-      </Route>
+      <Route path="help" element={<Help />} />
       <Route path="blog" element={<BlogList />} loader={blogsLoader} />
-      <Route path=":id" element={<SingleBlog />} loader={singleBlogLoader} />
+      <Route path=":id" element={<SingleBlog />}/>
       <Route path="*" element={<NotFound />} />
     </Route>  
   )

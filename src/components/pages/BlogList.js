@@ -19,19 +19,20 @@ export const BlogList = () => {
         {blogsList.map((singleBlog) => (
           <div key={singleBlog.id} className="singleBlogBlogList">
             <div className="blogTitleDiv">
-              
-              <NavLink to={singleBlog.id.toString()}>
-                {" "}
-                <p className="blogTitle">{singleBlog.title}</p>
-              </NavLink>
-            </div>
-            <div className="deleteBtnDiv">
-              <button
-                className="deleteButtonStyle"
-                onClick={() => deleteParticularBlog(singleBlog.id)}
-              >
-                Delete
-              </button>
+              <div>
+                <img
+                  className="imageInBlogList"
+                  src="https://archive.smashing.media/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/113d1046-6bdc-4475-a781-99f6cf7d1acd/001-understand-yourself-large-opt.png"
+                />
+              </div>
+
+              <div className="contentDiv">
+                <p className="titleOfBlog">Title</p>
+                <NavLink to={singleBlog.id.toString()}>
+                  {" "}
+                  <p className="blogTitle">{singleBlog.title}</p>
+                </NavLink>
+              </div>
             </div>
           </div>
         ))}

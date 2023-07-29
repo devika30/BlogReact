@@ -4,7 +4,7 @@
 }
 
 .navBarBody {
-  background-color: rgb(75, 5, 95);
+  background-color: rgb(241, 216, 236);
   width: 100%;
 }
 
@@ -17,14 +17,14 @@
 
 .navLink {
   padding: 0 20px;
-  color: rgb(255, 255, 255);
+  color: rgb(11, 7, 7);
   font-size: 25px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .navLink:hover {
-  background-color: rgb(75, 18, 128);
+  background-color: rgb(146, 125, 166);
   cursor: pointer;
   color: rgb(216, 210, 224);
   border-radius: 2px;
@@ -36,53 +36,74 @@
   flex-wrap: wrap;
   justify-content: center;
   padding: 10px;
-  background-color: rgb(144, 144, 190);
+  background-color: rgb(255, 255, 255);
 }
 
 .singleBlogBlogList {
-  height: 30vh;
-  background-color: rgba(71, 0, 129, 0.701);
-  padding: 16px;
-  width: 15vw;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
+  height: 40vh;
+  background-color: rgba(207, 204, 204, 0.701);
+  width: 20vw;
   margin: 10px;
+  padding: 10px;
   overflow-x: scroll;
   overflow-y: scroll;
 }
 
-.blogTitleDiv {
+.titleOfBlog {
+  font-size: 20px;
+  text-align: center;
+  color: rgb(78, 78, 79);
+  font-weight: 500;
+}
+
+.imageInBlogList {
+  width: 100%;
+  max-height: 20vh;
+}
+
+.imageDivSingle {
   display: flex;
-  align-items: start;
+  justify-content: center;
+}
+.imageInBlogListSingle {
+  width: 50%;
+  max-height: 25vh;
+}
+
+.contentDiv {
+  padding: 10px;
 }
 
 .blogTitle {
-  color: aliceblue;
-  font-size: 20px;
+  color: rgb(0, 13, 25);
+  font-size: 15px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   text-decoration: underline;
+  text-align: center;
+  margin-top: 20px;
+  font-weight: 200;
 }
 
 .deleteBtnDiv {
-  position: relative;
-  top: 10%;
+  text-align: center;
+  margin-top: 50px;
 }
 
 .deleteButtonStyle {
-  background-color: rgb(137, 93, 179);
-  padding: 15px;
+  background-color: rgb(253, 225, 190);
+  padding: 10px;
   border: none;
   border-radius: 5px;
-  color: aliceblue;
+  color: rgb(0, 0, 0);
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 17px;
+  text-align: center;
 }
 
 .homePageTitle {
+  margin: 0;
   background-color: rgb(154, 104, 201);
   color: aliceblue;
   padding: 10px;
@@ -91,9 +112,139 @@
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 .singlePageBlogDiv {
-  background-color: azure;
-  padding: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffebeb;
+  padding: 20px;
+  min-height: 60vh;
+  width: 50%;
+  border: 1px solid black;
+  margin-top: 20px;
+}
+
+.headerBlogTitle {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 500;
+  padding: 10px;
+}
+
+.titleSingleBlog {
+  text-align: initial;
+  padding: 20px;
+}
+
+.bodySingleBlog {
+  text-align: initial;
+  margin-left: 20px;
+}
+
+.blogBodyCreate {
+  padding: 100px;
+  background-color: rgb(248, 198, 255);
   height: 100vh;
+}
+
+.createBtn {
+  background-color: rgb(217, 137, 213);
+  color: white;
+  padding: 10px;
+  width: 10vw;
+  font-size: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.labelTitleCreate {
+  font-size: 20px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.wholeAboutDiv {
+  background-color: rgb(255, 255, 255);
+  height: 100vh;
+}
+
+.aboutUsDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+}
+
+.contentAboutusDiv {
+  width: 50vw;
+  margin: 30px;
+}
+.contentAboutusDiv p {
+  font-size: 20px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.aboutUsButton {
+  background-color: rgb(230, 148, 243);
+  padding: 5px;
+  border-radius: 5px;
+}
+.helpDiv {
+  background-color: #fbc0ff;
+  height: 100vh;
+}
+.howCanHelpDiv {
+  text-align: center;
+  padding: 20px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.helpContent {
+  text-align: center;
+  padding: 5px 50px 10px 50px;
+}
+
+.helpContent p {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.helpDetaDetailsDiv {
+  position: absolute;
+  left: 50%;
+  transform: translate(-60%);
+}
+
+.officeNumberDiv {
+  display: flex;
+  margin-left: 100px;
+}
+.faxEmailDiv {
+  display: flex;
+  margin-left: 100px;
+}
+
+.eachHelpDiv1 {
+  background-color: rgb(253, 249, 255);
+  padding: 10px;
+  margin: 10px;
+  width: 20vw;
+  height: 20vh;
+  border: 1px solid black;
+}
+.locationDiv {
+  display: flex;
+  justify-content: center;
+  padding: 2px;
+}
+.eachHelpDiv1 img {
+  width: 30px;
+  padding: 1px;
+}
+
+.eachHelpDiv1 p {
+  display: flex;
+  justify-content: center;
 }
 
 @media only screen and (max-width: 700px) {
@@ -101,5 +252,40 @@
     flex-direction: column;
     height: auto;
     align-items: center;
+  }
+
+  .singlePageBlogDiv {
+    position: none;
+    width: 100%;
+    margin-top: 200px;
+    height: 100vh;
+  }
+  .createBtn {
+    width: 100%;
+  }
+
+  .blogBodyCreate {
+    height: 70vh;
+  }
+
+  .eachHelpDiv1 {
+    width: 100%;
+  }
+  .officeNumberDiv{
+    flex-direction: column
+  }
+  .faxEmailDiv{
+    flex-direction: column;
+  }
+
+  .helpDiv{
+    height: 150vh;
+  }
+  
+}
+
+@media only screen and (max-width: 550px) {
+  .singleBlogBlogList {
+    width: 100%;
   }
 }
