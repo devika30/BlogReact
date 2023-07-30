@@ -22,7 +22,8 @@ function CreateBlog() {
     return randomId;
   };
 
-  const onSubmitBlog = () => {
+  const onSubmitBlog = (e) => {
+    e.preventDefault();
     const singleblog = {
       id: generateRandomId(),
       title: blogTitle,
