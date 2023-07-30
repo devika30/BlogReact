@@ -1,16 +1,11 @@
 import React, { useEffect } from "react";
 import {
   redirect,
-  useActionData,
-  useLoaderData,
   useParams,
 } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import axios from "axios";
 import DeleteButton from "./DeleteButton";
 import { delete_blog } from "./../../reduxfiles/blogActions";
-import myStyle from "../myStyle.css";
 
 export const SingleBlog = () => {
   const dispatch = useDispatch();
@@ -19,6 +14,8 @@ export const SingleBlog = () => {
   const blog = useSelector((state) => {
     console.log("State", state.blogsList);
     return state.blogsList.find((blog) => {
+      console.log("blog.id",blog.id)
+      console.log("id",id.toString())
       return blog.id.toString() === id.toString();
     });
   });
@@ -45,10 +42,3 @@ export const SingleBlog = () => {
   );
 };
 
-// export const singleBlogLoader = async ({ params }) => {
-
-//   // const response = await axios.get(
-//   //   "https://jsonplaceholder.typicode.com/posts/" + id
-//   // );
-//   // return response.data;
-// };

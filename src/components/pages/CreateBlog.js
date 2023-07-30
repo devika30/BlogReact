@@ -34,13 +34,9 @@ function CreateBlog() {
     setBlogBody("");
   };
 
-  const deleteParticularBlog = (id) => {
-    dispatch(delete_blog(id));
-  };
   return (
     <>
       <h1 className="homePageTitle">Blog Page</h1>
-
       <div className="blogBodyCreate">
         <form className="formCreateBlog">
           <div class="mb-3">
