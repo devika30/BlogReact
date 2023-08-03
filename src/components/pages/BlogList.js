@@ -1,18 +1,20 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { delete_blog } from "./../../reduxfiles/blogActions";
-import { Link, NavLink } from "react-router-dom";
-import axios from "axios";
-import myStyle from "../../components/myStyle.css";
+import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
+import image1 from "../images/image1.jpg";
+import image2 from "../images/image2.jpg";
+import image3 from "../images/image3.jpg";
+import image4 from "../images/image4.jpg";
+import image5 from "../images/image5.jpg";
+import image6 from "../images/image6.jpg";
 
 export const BlogList = () => {
-  const { blogsList } = useSelector((state) => state);
-  const dispatch = useDispatch();
-
-  const deleteParticularBlog = (id) => {
-    dispatch(delete_blog(id));
+  const randomImageUrls = [image1, image2, image3, image4,image5,image6];
+  const getRandomImageUrl = () => {
+    const randomIndex = Math.floor(Math.random() * randomImageUrls.length);
+    return randomImageUrls[randomIndex];
   };
-
+  const { blogsList } = useSelector((state) => state);
   return (
     <div>
       <div className="blogBody">
@@ -22,7 +24,7 @@ export const BlogList = () => {
               <div>
                 <img
                   className="imageInBlogList"
-                  src="https://archive.smashing.media/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/113d1046-6bdc-4475-a781-99f6cf7d1acd/001-understand-yourself-large-opt.png"
+                  src={getRandomImageUrl()}
                 />
               </div>
 
@@ -39,11 +41,4 @@ export const BlogList = () => {
       </div>
     </div>
   );
-};
-
-export const blogsLoader = async () => {
-  const response = await axios.get(
-    "https://jsonplaceholder.typicode.com/posts"
-  );
-  return response.data;
 };

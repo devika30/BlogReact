@@ -13,7 +13,6 @@ import NotFound from "./components/pages/NotFound";
 import Help from "./components/pages/Help";
 import { BlogList } from "./components/pages/BlogList";
 import { SingleBlog } from "./components/pages/SingleBlog";
-import { blogsLoader } from "./components/pages/BlogList";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import { useDispatch, useSelector } from "react-redux";
@@ -27,7 +26,7 @@ const router = createBrowserRouter(
       <Route path="create" element={<CreateBlog />} />
       <Route path="about" element={<About />} />
       <Route path="help" element={<Help />} />
-      <Route path="blog" element={<BlogList />} loader={blogsLoader} />
+      <Route path="blog" element={<BlogList />} />
       <Route path=":id" element={<SingleBlog />} />
       <Route path="*" element={<NotFound />} />
     </Route>
@@ -36,8 +35,12 @@ const router = createBrowserRouter(
 
 function App() {
   const { isBlogFetched, blogsList } = useSelector((state) => state);
+  console.log("isBlogFetched before useEffect run", isBlogFetched);
+  console.log("blogsList  before useEffect run", blogsList);
+  console.log(!isBlogFetched && blogsList.length == 0);
+
   const dispatch = useDispatch();
-  // the if conditions run only when the blog length is 0 i.e blogsList: [], once its get filled the useEffect wont run
+  // the if conditions run only when the blog length is 0 i.e blogsList: [], once its get filled the useEffect wont run in order to not reload the page everytime we add new blog
   useEffect(() => {
     if (!isBlogFetched && blogsList.length == 0) {
       dispatch(fetchBlogs());

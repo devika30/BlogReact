@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { add_blog, delete_blog } from "./../../reduxfiles/blogActions";
+import { useNavigate } from "react-router-dom";
+
 
 function CreateBlog() {
   const [blogTitle, setBlogTitle] = useState("");
   const [blogBody, setBlogBody] = useState("");
+  const [blogUrl, setBlogUrl] = useState("");
+  const navigate = useNavigate();
   const { sitename, blogsList } = useSelector((state) => state);
   const dispatch = useDispatch();
+
 
   const generateRandomId = () => {
     const characters =
@@ -28,11 +33,15 @@ function CreateBlog() {
       id: generateRandomId(),
       title: blogTitle,
       body: blogBody,
+      url:blogUrl
     };
 
     dispatch(add_blog(singleblog));
     setBlogTitle("");
     setBlogBody("");
+    setBlogUrl("")
+    navigate("/");
+
   };
 
   return (
@@ -41,7 +50,7 @@ function CreateBlog() {
       <div className="blogBodyCreate">
         <form className="formCreateBlog">
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="labelTitleCreate">
+            <label htmlFor="exampleInputEmail1" class="labelTitleCreate">
               Blog Title
             </label>
             <input
@@ -55,7 +64,7 @@ function CreateBlog() {
             />
           </div>
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="labelTitleCreate">
+            <label htmlFor="exampleInputPassword1" class="labelTitleCreate">
               Blog Body
             </label>
             <textarea
@@ -65,6 +74,21 @@ function CreateBlog() {
               name="blogBody"
               class="form-control bodyCreate"
               id="exampleInputPassword1"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label htmlFor="exampleInputEmail1" class="labelTitleCreate">
+              Blog Image URL 
+            </label>
+            <input
+              type="text"
+              value={blogUrl}
+              onChange={(e) => setBlogUrl(e.target.value)}
+              name="blogTitle"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
             />
           </div>
 

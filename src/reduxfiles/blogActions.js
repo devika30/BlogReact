@@ -1,4 +1,10 @@
-import { FETCH_BLOG, ADD_BLOG, DELETE_BLOG, FETCH_ALL_BLOG } from "./blogType";
+import {
+  FETCH_BLOG,
+  ADD_BLOG,
+  DELETE_BLOG,
+  FETCH_ALL_BLOG,
+  SET_SEARCH,
+} from "./blogType";
 import axios from "axios";
 
 export const fetchBlogs = () => {
@@ -38,6 +44,16 @@ export const delete_blog = (blogId) => {
     type: DELETE_BLOG,
     payload: {
       blogId,
+    },
+  };
+};
+
+//to get searched blogs
+export const fetch_search_blogs = (searchedblogs) => {
+  return {
+    type: SET_SEARCH,
+    payload: {
+      blog: searchedblogs,
     },
   };
 };
