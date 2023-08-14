@@ -10,26 +10,27 @@ const initialState = {
   sitename: "BlogS-site",
   blogsList: [],
   isBlogFetched: false,
-  query: "",
+  filteredBlogs: null,
 };
 
 const blogReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_SEARCH:
+      const filteredBlog = state.blogsList.filter((singleBlog) => {
+        return singleBlog.title
+          .toLowerCase()
+          .includes(action.payload.blog.toLowerCase());
+      });
       if (action.payload.blog === "") {
         return {
           ...state,
-          query: state.blogsList.filter((blog) =>
-            blog.title.toLowerCase().includes(action.payload.blog.toLowerCase())
-          ),
+          filteredBlogs: null,
         };
       }
       return {
         ...state,
-        query: action.payload.blog,
-        blogsList: state.blogsList.filter((blog) =>
-          blog.title.toLowerCase().includes(action.payload.blog.toLowerCase())
-        ),
+        blogsList: state.blogsList,
+        filteredBlogs: action.payload.blog === "" ? null : filteredBlog,
       };
     case FETCH_ALL_BLOG:
       return {
